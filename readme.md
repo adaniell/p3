@@ -4,7 +4,7 @@
 [http://p3.ashleydaniell.com](http://p3.ashleydaniell.com)
 
 ## Description
-An xkcd Password Generator, with the purpose of creating a password phrase using random common English words. 
+An application generating random lorem ipsum text and user-names. 
 
 ## Demo
 Please view screencast here: []() 
