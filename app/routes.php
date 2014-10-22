@@ -20,16 +20,36 @@ Route::get('/', function() {
 
 Route::get('/lorem-ipsum', function()
 {
+
 	return View::make('lorem-ipsum');
 	// return ('lorem-ipsum');
 });
 
-Route::post('lorem-ipsum', function ()
+Route::post('/lorem-ipsum', function()
 {
-	$generator = new Badcow\LoremIpsum\Generator();
-	$paragraphs = $generator->getParagraphs(5);
-	echo implode('<p>', $paragraphs);
+	
+	$length = Input::get('length');
+
+    if($length > 50){
+		echo 'please enter a value below 50';
+    }
+    elseif ($length == 0) {
+    	echo 'please enter number of words to generate text';
+    }
+	else {
+
+		$generator = new Badcow\LoremIpsum\Generator();
+		$paragraphs = $generator->getParagraphs($length);
+
+	}
+
+	return View::make('lorem-ipsum')
+			-> with ('length', $length)
+			-> with ('paragraphs', $paragraphs);
+		
+	
 });
+
 
 Route::get('/user', function()
 {

@@ -6,7 +6,9 @@
 
 @section('content')
 
-<a href='/'>Home</a>
+<p><i class="fa fa-angle-double-left"></i> <a href='/'>Home</a><br/>
+<i class="fa fa-angle-double-left"></i> <a href='/lorem-ipsum'>Lorem Ipsum Generator</a></p>
+
 
 <h2>Random User Generator</h2>
 <p>Create random user data for your applications. Like Lorem Ipsum, but for people.</p>
@@ -35,9 +37,15 @@
 
 		{{ Form::checkbox('name', 'value', true, array('class' => 'name'));}}  <br/>
 
-		{{ Form::submit('Generate'); }}
+		{{ Form::submit('Generate', ['class' => 'btn']); }}
 
 	{{ Form::close() }}
+
+<div class="password">
+			<p>
+				
+			</p>
+		</div>
 
 
 @stop

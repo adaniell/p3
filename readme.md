@@ -16,4 +16,4 @@ For my lorem ipsum text, I'm using the Package badcow/lorem-ipsum.
 For my random users, I'm using the Package fzaninotto/faker.
 
 ## Outside code 
-No outside code.  
+I'm using Font Awesome [http://fortawesome.github.io/Font-Awesome/](http://fortawesome.github.io/Font-Awesome/)

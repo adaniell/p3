@@ -6,28 +6,27 @@
 	<meta charset='utf-8'>
 
 	<link rel='stylesheet' href='/css/stylesheet.css' type='text/css'>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 	@yield('head')
 
 	
 </head>
 <body>
-	
 
-{{--	<a href='/'><img class='logo' src='/images/laravel-foobooks-logo@2x.png' alt='Foobooks logo'></a>
+<div id="header">
 
-	<a href='https://github.com/susanBuck/foobooks'>View on Github</a>
+	<h1>Developer's Best Friend <i class="fa fa-laptop black"></i><!--<i class="fa fa-file-code-o black"></i>--></h1>
 
-	<nav>
-		<ul>
-			<li><a href='/list'>List All</a></li>
-			<li><a href='/add'>+ Add Book</a></li>
-		</ul>
-	</nav> --}}
+</div>
+
+
+<div id="content">
 	
 	@yield('content')
 
-	@yield('body')
+</div>
+
 	
 </body>
 </html>
