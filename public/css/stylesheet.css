@@ -63,7 +63,7 @@ a:hover, a:active   {
 	background: rgba(255, 255, 255, 0.7);
 	margin-bottom:20px;
 }
-#content p {
+p {
 	margin-bottom:30px;
 	font-size:20px;
 }
@@ -74,35 +74,43 @@ form {
 	margin-bottom: 10px;
 	text-align: center;
 }
-form label {
-	font-weight:bold;
-	font-size:18px;
-	font-family:Arial, Helvetica, sans-serif;
-}
+
 form input {
-	border: 1px solid red;
+	border: 2px solid black;
 }
 img {
 	text-align: center;
 	width: 100%;
 	margin:0 auto;
 }
-.password {
+#results {
 	background-color: #c21250;
-	text-align: center;
-	padding: 5px;
 	margin-bottom: 10px;
+	padding: 20px;
+	
+}
+#results p {
+	font-weight:normal;
+	font-size:16px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+xul li {
+	border: 1px solid red;
+	display: inline-block;
+	padding-right: 20px;
+	font-size:16px;
+	font-family:Arial, Helvetica, sans-serif;
+	max-width: 25%;
+	word-wrap: break-word;
 }
 .small {
 	font-size: 14px;
 }
-x.btn {
-	border: 1px solid black;
-	padding: 10px;
-	margin: 20px;
-}
 .black {
 	color: black;
+}
+.red {
+	color: red;
 }
 .btn {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #8f2149), color-stop(1, #c21250));
@@ -126,6 +134,7 @@ x.btn {
 	padding:10px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #c70067;
+	margin-bottom: 20px;
 }
 .btn:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c21250), color-stop(1, #8f2149));
@@ -140,4 +149,8 @@ x.btn {
 .btn:active {
 	position:relative;
 	top:1px;
+}
+.errors p {
+	font-style: italic;
+	font-size: 18px;
 }

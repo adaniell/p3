@@ -20,36 +20,34 @@ Route::get('/', function() {
 
 Route::get('/lorem-ipsum', function()
 {
-
 	return View::make('lorem-ipsum');
-	// return ('lorem-ipsum');
 });
 
-Route::post('/lorem-ipsum', function()
+
+Route::post('lorem-ipsum', function()
 {
-	
-	$length = Input::get('length');
 
-    if($length > 50){
-		echo 'please enter a value below 50';
+$data = Input::all();
+
+	$rules = array(
+        "length" => "required|integer|min:1|max:50"
+    );
+
+	$validator = Validator::make($data, $rules);
+
+    if ($validator->fails()) {
+    	$messages = $validator->messages();
+        return Redirect::to("lorem-ipsum")
+        	->withErrors($validator);
     }
-    elseif ($length == 0) {
-    	echo 'please enter number of words to generate text';
-    }
-	else {
 
-		$generator = new Badcow\LoremIpsum\Generator();
-		$paragraphs = $generator->getParagraphs($length);
+	$paragraphGenerator = new Badcow\LoremIpsum\Generator();
+		$paragraphs = $paragraphGenerator->getParagraphs(Input::get("length"));
+		$textResult = "<p>".implode("</p><p>", $paragraphs)."</p>";
 
-	}
-
-	return View::make('lorem-ipsum')
-			-> with ('length', $length)
-			-> with ('paragraphs', $paragraphs);
-		
-	
+	return View::make("lorem-ipsum")
+		->with("textResult", $textResult);
 });
-
 
 Route::get('/user', function()
 {
@@ -57,27 +55,43 @@ Route::get('/user', function()
 	// return ('user');
 });
 
-
-
-Route::post('user', function ()
+Route::post('/user', function ()
 {
-//require_once '/path/to/Faker/src/autoload.php';
-// alternatively, use another PSR-0 compliant autoloader (like the Symfony2 ClassLoader for instance)
 
-// use the factory to create a Faker\Generator instance
-$faker = Faker\Factory::create();
+	$data = Input::all();
 
-// generate data by accessing properties
-echo $faker->name;
-  // 'Lucy Cechtelar';
-echo $faker->address;
-  // "426 Jordy Lodge
-  // Cartwrightshire, SC 88120-6700"
-echo $faker->text;
-  // Sint velit eveniet. Rerum atque repellat voluptatem quia rerum. Numquam excepturi
-  // beatae sint laudantium consequatur. Magni occaecati itaque sint et sit tempore. Nesciunt
-for ($i=0; $i < 10; $i++) {
-  echo $faker->name, "\n";
-}
+	$rules = array(
+        "length" => "required|integer|min:1|max:50"
+    );
+
+	$validator = Validator::make($data, $rules);
+
+    if ($validator->fails()) {
+    	$messages = $validator->messages();
+        return Redirect::to("user")
+        	->withErrors($validator);
+    }
+
+	$faker = Faker\Factory::create();
+
+	$nameArray = [];
+	$emailArray = [];
+	$phoneArray = [];
+
+
+	for($i = 0; $i < Input::get("length"); $i++) {
+ 		array_push($nameArray, $faker->name);
+ 			if (Input::get("include_email") == "yes") {
+ 				array_push($emailArray, $faker->email);
+ 			}
+ 			if (Input::get("include_phone") == "yes") {
+ 				array_push($phoneArray, $faker->phoneNumber);
+ 			}
+ 	}
+
+	return View::make("user")
+		->with("nameArray", $nameArray)
+		->with("emailArray", $emailArray)
+		->with("phoneArray", $phoneArray);
 
 });

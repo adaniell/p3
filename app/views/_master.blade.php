@@ -8,8 +8,6 @@
 	<link rel='stylesheet' href='/css/stylesheet.css' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-	@yield('head')
-
 	
 </head>
 <body>

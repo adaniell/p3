@@ -1,9 +1,5 @@
 @extends('_master')
 
-@section('head')
-	
-@stop
-
 @section('content')
 
 <p><i class="fa fa-angle-double-left"></i> <a href='/'>Home</a><br/>
@@ -11,42 +7,55 @@
 
 
 <h2>Random User Generator</h2>
-<p>Create random user data for your applications. Like Lorem Ipsum, but for people.</p>
+<p>This random user generator provides fake user data to assit in creating and testing databases.  </p>
 
 
+{{ Form::open(array("url" => "user")) }}
+	<p>
+	{{ Form::label("length", "Users") }}
+	{{ Form::text('length','', ['size' => '2']); }} <span class="small">Max. 50</span><br/>
 
-{{--	
-	<form method="GET" action='/list'>
-		<label form='query'>Search:</label>
-		<input type='text' name='query' id='query'> 
-		<input type='submit' value='Search'>
-	</form>
---}}
+	{{ Form::label("include_email", "Include email:") }}
+	{{ Form::checkbox("include_email", "yes") }}<br/>
 
-	{{ Form::open(array('url' => '/user', 'method' => 'POST')) }}
+	{{ Form::label("include_phone", "Include phone number:") }}
+	{{ Form::checkbox("include_phone", "yes") }}</p>
 
-		{{ Form::label('faker','How many users?') }}
+	<div class="errors">
+		@foreach($errors->all() as $message)
+    		<p><i class="fa fa-exclamation-triangle red"></i> {{ $message }}</p>
+		@endforeach
+	</div>
+
+	<p>{{ Form::submit('Generate', ['class' => 'btn']) }}</p>
+		
+{{ Form::close() }}
 	
-		{{ Form::text('faker', 'value', ['size' => '2']); }} <br/>
 
-		{{ Form::label('faker','Include address?') }}
+	<div id="results">
 
-		{{ Form::checkbox('name', 'value', true, array('class' => 'name'));}}  <br/>
+		@if (Request::isMethod("post"))
+		<p>
+				@foreach($nameArray as $key => $value)
+		    		{{ $value }}<br/>
+				@endforeach
+		</p>
+		<p>	
+				@foreach($emailArray as $key => $value)
+		    		{{ $value }}<br/>
+				@endforeach
+		</p>
+		<p>	
+				@foreach($phoneArray as $key => $value)
+		    		{{ $value }}<br/>
+				@endforeach	
+		</p>
+		@endif
 
-		{{ Form::label('faker','Include profile?') }}
 
-		{{ Form::checkbox('name', 'value', true, array('class' => 'name'));}}  <br/>
+	</div>
 
-		{{ Form::submit('Generate', ['class' => 'btn']); }}
-
-	{{ Form::close() }}
-
-<div class="password">
-			<p>
-				
-			</p>
-		</div>
-
+</div>
 
 @stop
 
