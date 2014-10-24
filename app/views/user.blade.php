@@ -15,10 +15,10 @@
 	{{ Form::label("length", "Users") }}
 	{{ Form::text('length','', ['size' => '2']); }} <span class="small">Max. 50</span><br/>
 
-	{{ Form::label("include_email", "Include email:") }}
+	{{ Form::label("include_email", "Email addresses?:") }}
 	{{ Form::checkbox("include_email", "yes") }}<br/>
 
-	{{ Form::label("include_phone", "Include phone number:") }}
+	{{ Form::label("include_phone", "Phone numbers?:") }}
 	{{ Form::checkbox("include_phone", "yes") }}</p>
 
 	<div class="errors">
@@ -32,28 +32,28 @@
 {{ Form::close() }}
 	
 
-	<div id="results">
+<div id="results">
 
-		@if (Request::isMethod("post"))
-		<p>
-				@foreach($nameArray as $key => $value)
-		    		{{ $value }}<br/>
-				@endforeach
-		</p>
-		<p>	
-				@foreach($emailArray as $key => $value)
-		    		{{ $value }}<br/>
-				@endforeach
-		</p>
-		<p>	
-				@foreach($phoneArray as $key => $value)
-		    		{{ $value }}<br/>
-				@endforeach	
-		</p>
-		@endif
+	@if (Request::isMethod("post"))
+	<p>
+			@foreach($nameArray as $key => $value)
+	    		{{ $value }}<br/>
+			@endforeach
+	</p>
+	<p>	
+			@foreach($emailArray as $key => $value)
+	    		{{ $value }}<br/>
+			@endforeach
+	</p>
+	<p>	
+			@foreach($phoneArray as $key => $value)
+	    		{{ $value }}<br/>
+			@endforeach	
+	</p>
+	@endif
 
 
-	</div>
+</div>
 
 </div>
 

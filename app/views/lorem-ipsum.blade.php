@@ -7,7 +7,7 @@
 
 <h2>Lorem Ipsum Generator</h2>
 <p>Lorem Ipsum is simply fake latin based text used for placeholder content in the publishing and design world. It helps give the look and feel 
-of readable English text that fills your layout while under development. The main purpose is to take the focus off of the content, and to put 
+of readable English text that fills your layout while under development. The main goal is to take the focus off of the content, and to put 
 it on the design (layout, typography, graphics, etc.). </p>
 
 
